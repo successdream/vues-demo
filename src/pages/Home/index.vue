@@ -3,14 +3,16 @@
     <div class="myHome_top"></div>
     <div class="myHome_center">
       <div class="myHome_siderBar">
-        <SiderBar></SiderBar>
+        <SiderBar ref="domSiderBarRef" @change="handleChange"  :user.prop="{ name: 'jack' }" testProp="12312">
+          <div class="slotClass">我是slot中的内容</div>
+        </SiderBar>
       </div>
       <div class="myHome_content">
         <LeftContent></LeftContent>
       </div>
     </div>
     <div class="myHome_bottom"></div>
-    <div v-my-directive="'red'">我是Home组件的文本</div>
+    <!-- <div>我是Home组件的文本</div> -->
   </div>
 </template>
 
@@ -22,6 +24,16 @@ export default {
   data() {
     return {};
   },
+  setup() {
+    const domSiderBarRef = ref(null)
+    onMounted(() => {
+      console.log(domSiderBarRef.value, 'zn-666');
+      // domSiderBarRef.value.handleCountChange()
+    })
+    return {
+      domSiderBarRef
+    }
+  },
 
   components: {
     SiderBar,
@@ -30,7 +42,17 @@ export default {
 
   computed: {},
 
-  methods: {},
+  methods: {
+    // 处理变化
+    handleChange(data, data1) {
+      console.log('zn-handleChange', data, data1)
+    }
+  },
+
+  mounted() {
+    console.log(this.$refs.siderBar, 'zn-siderBar')
+    // this.$refs.domSiderBarRef.handleCountChange()
+  }
 
   // mounted() {
   //   this.getList()
@@ -53,9 +75,10 @@ export default {
     flex: 1;
     // background-color: yellow;
     display: flex;
-    .myHome_siderBar {
-      width: 300px;
-    }
+    // 替代/deep/
+    // :deep( .countRef){
+    //   color: red;
+    // }
     .myHome_content {
       flex:1;
       position: relative;
@@ -67,6 +90,11 @@ export default {
         font-family: serif;
       }
     }
+    .myHome_siderBar{
+        // .slotClass{
+        //   color: yellowgreen
+        // }
+    }
   }
   .myHome_bottom {
     height: 80px;
@@ -74,3 +102,11 @@ export default {
   }
 }
 </style>
+
+
+<!-- <style lang="scss" module>
+.span1 {
+  color: green;
+  font-size: 30px;
+}
+</style> -->
