@@ -8,16 +8,6 @@
 </template>
 
 <script>
-import {
-  ref,
-  onMounted,
-  watch,
-  toRefs,
-  provide,
-  reactive,
-  watchEffect,
-  Teleport,
-} from "vue";
 export default {
     props: {
         show: {
@@ -26,7 +16,9 @@ export default {
         }
     },
   data() {
-    return {};
+    return {
+      testVal: true
+    };
   },
   watch: {
     show(val) {
@@ -40,8 +32,66 @@ export default {
   computed: {},
 
   methods: {
-    changeShow(show) {
+    changeShow() {
         this.$store.commit('changeShow', false)
+        if(this.testVal) {
+          const testFn = function()  {
+            console.log(12312)
+            console.log(12312)
+
+          }
+          // function testFn() {
+          //   console.log('testFn')
+          // }
+          testFn()
+        }
+    },
+
+    async testFor() {
+      // for (let i = 0; i < 10; i--) {
+      //   console.log(1212)
+      // }
+
+      // new Promise(async() => {
+
+      // })
+
+      // for(let a of [1,2,3]){
+      //   await new Promise((resolve) => {
+      //     resolve(a)
+      //   })
+      // }
+      // const val = '123';
+      // switch(val) {
+      //   case '345': 
+      //     break;
+      //   case '345':
+      //     break;
+
+      // }
+      // if(this.testVal) {
+
+      // }
+
+      // switch(this.testVal) {
+      //   case 1 : {
+      //     let a = 1;
+          
+      //     break;
+      //   }
+        
+      //   break;
+      // }
+
+      const data = { 
+        a: 1,
+        b: 2,
+        c: 3
+      };
+      // const 
+
+      const {a} = data;
+      console.log(a)
     }
   },
 };

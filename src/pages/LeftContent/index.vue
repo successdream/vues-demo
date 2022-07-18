@@ -1,12 +1,13 @@
 <template>
   <div class="leftContentBox" id="left-box">
     <!-- <el-button type="primary" @click="changCount"> 开启全屏 </el-button> -->
-    <div class="leftSecondBox">
+    <!-- <div class="leftSecondBox">
       <div>我是leftContent组件中的 obj {{ obj.name }}</div>
       <div>我是leftContent组件中的 testObj {{ obj.name }}</div>
       <CustomRefCom ></CustomRefCom>
-    </div>
-
+      
+    </div> -->
+    <router-view></router-view>
   </div>
 </template>
 
@@ -14,10 +15,12 @@
 import {
   ref,  // 基本值响应式 ref 装饰，取值是 ref.value
   onMounted,  // mounted  参数是个 回调函数
+  // eslint-disable-next-line no-unused-vars
   watch, //  参数一是值， 参数二是回调函数
   provide, // 参数一是key, 参数二是值
   reactive, // 对象 响应式  proxy 装饰 取值是 副本对象.key
   watchEffect, // watch 副对象, props变化，不执行， state 变化不执行，因为props和state是对象，引用类型，不会触发
+  // eslint-disable-next-line no-unused-vars
   Teleport, // v3 新增组件，可把组件移动到除app组件和body下，其他的则不行
   isProxy, // 检查是不受readOny和reactive装饰的对象
   toRaw, // 去除poxy装饰，还原本对象，还原的对象和原对象是否可以 === 
@@ -25,15 +28,18 @@ import {
   isReactive, // 是否是reactive装饰的对象
   markRaw, // 标记此对象不可作为可响应式对象
   unref, // 还原ref， 若ref修饰的是基本值，则还原为基本值，若为对象，执行后为poxy装饰的对象
+  // eslint-disable-next-line no-unused-vars
   toRef, // 此为一个非响应式对象的属性变为可响应式ref
   toRefs, // 把一个响应式对象，转为普通对象，但是其属性转为ref
+  // eslint-disable-next-line no-unused-vars
   isRef, // 检查一个对象是不是一个ref
+  // eslint-disable-next-line no-unused-vars
   customRef, // 自定义ref
 } from "vue";
-import Test from "./Test";
+// import Test from "./Test";
 import myMixin from "./Mymixin/myMixIn.js";
-import CustomDirection from "./CustomDirection";
-import CustomRefCom from './CustomRefCom'
+// import CustomDirection from "./CustomDirection";
+// import CustomRefCom from './CustomRefCom'
 export default {
   // provide: {
   //   location: "North Pole",
@@ -48,10 +54,10 @@ export default {
   mixins: [myMixin],
 
   components: {
-    Test,
-    CustomDirection,
-    Teleport,
-    CustomRefCom
+    // Test,
+    // CustomDirection,
+    // Teleport,
+    // CustomRefCom
   },
 
   setup() {
@@ -112,6 +118,7 @@ export default {
       "result"
     );
 
+    // eslint-disable-next-line no-unused-vars
     const testReadOnly = isReactive(fromReadOnly);
 
     const testReadOnlyReactive = isReactive(fromReadOnlyReactive);
@@ -217,7 +224,7 @@ export default {
     watchEffect(
       () => {
         // console.log("LeftCOntent中的watchEffect执行了");
-        // debugger
+ 
       },
       { flush: "post" }
     );

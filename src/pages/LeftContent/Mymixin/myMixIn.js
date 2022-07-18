@@ -10,7 +10,8 @@ const myMixIn = {
     },
 
     watch:{
-        listRef(val) {
+        // eslint-disable-next-line no-unused-vars
+        listRef(_val) {
             // console.log(val, 'myMinIn-watch')
         }
     }

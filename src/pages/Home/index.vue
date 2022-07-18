@@ -1,10 +1,15 @@
 <template>
   <div class="myHome">
-    <div class="myHome_top"></div>
+    <div class="myHome_top">
+        <div class="top_left"></div>
+        <div class="top_right">
+          <el-button @click="handleLoginOut">登出</el-button>
+        </div>
+    </div>
     <div class="myHome_center">
       <div class="myHome_siderBar">
-        <SiderBar ref="domSiderBarRef" @change="handleChange"  :user.prop="{ name: 'jack' }" testProp="12312">
-          <div class="slotClass">我是slot中的内容</div>
+        <SiderBar ref="domSiderBarRef" :user.prop="{ name: 'jack' }" testProp="12312">
+          
         </SiderBar>
       </div>
       <div class="myHome_content">
@@ -12,52 +17,29 @@
       </div>
     </div>
     <div class="myHome_bottom"></div>
-    <!-- <div>我是Home组件的文本</div> -->
   </div>
 </template>
 
-<script>
-import { ref, onMounted, watch, toRefs } from "vue";
+<script setup>
+import { onMounted, computed } from "vue";
 import SiderBar from "../SiderBar";
 import LeftContent from "../LeftContent";
-export default {
-  data() {
-    return {};
-  },
-  setup() {
-    const domSiderBarRef = ref(null)
-    onMounted(() => {
-      console.log(domSiderBarRef.value, 'zn-666');
-      // domSiderBarRef.value.handleCountChange()
-    })
-    return {
-      domSiderBarRef
-    }
-  },
+import loginOut from './loginOut';
 
-  components: {
-    SiderBar,
-    LeftContent,
-  },
+const { handleLoginOut } = loginOut();
 
-  computed: {},
+// mounted 
+onMounted(() => {
 
-  methods: {
-    // 处理变化
-    handleChange(data, data1) {
-      console.log('zn-handleChange', data, data1)
-    }
-  },
+})
 
-  mounted() {
-    console.log(this.$refs.siderBar, 'zn-siderBar')
-    // this.$refs.domSiderBarRef.handleCountChange()
-  }
+// 计算属性
+// eslint-disable-next-line no-unused-vars
+const myComputed = computed(() => {
+  return 0
+})
 
-  // mounted() {
-  //   this.getList()
-  // }
-};
+
 </script>
 
 <style lang='less' scoped>
@@ -69,7 +51,19 @@ export default {
   .myHome_top {
     height: 80px;
     line-height: 80px;
-    // background-color: green;
+    padding: 0px 25px;
+    display: flex;
+    align-items: center;
+    .top_left{
+      flex: 1;
+    }
+    .top_right{
+      width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
   }
   .myHome_center {
     flex: 1;
@@ -94,6 +88,7 @@ export default {
         // .slotClass{
         //   color: yellowgreen
         // }
+        width: 300px;
     }
   }
   .myHome_bottom {

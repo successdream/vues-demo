@@ -7,6 +7,7 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import i18n from '@/utils/plugins/i18n.js'
 import store from './Store'
+
 const i18nStrings = {
     hi: 'Hallo!'
   }

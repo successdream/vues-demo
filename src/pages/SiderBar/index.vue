@@ -1,112 +1,92 @@
 <template>
-    <div class="siderBarCom">
-      侧边栏占位符
-      <el-button type="primary" style="{cursor:pointer}" @click="handleClick(!newShow)"> {{!newShow?'打开弹窗': '关闭弹窗'}}</el-button>
-      <el-button type="primary" @click="handleCountChange"> 更改count </el-button>
-      <!-- <button :style="{cursor: 'pointer'}" >打开弹窗</button> -->
-  
-      <!-- <component :is="Model"  /> -->
-       <component :is="Model"  :show="newShow" />
-      <div>{{JSON.stringify(newShow)}}</div>
-      <div class="countRef"> 侧边栏 非响应式数据 {{count}} ==== countRef {{countRef}}</div>
-      <h1 v-MyD:[test]="30">This is a Heading</h1>
-      <div class="myFontColor">testProps的值{{ testProp}}</div>
-      <slot></slot>
+  <el-row class="tac">
+    <el-col :span="24">
+      <el-menu
+        default-active="2"
+        class="el-menu-vertical-demo"
+        @open="handleOpen"
+        @close="handleClose"
+      >
+      <SiderBarChild :list="currentRoute"></SiderBarChild>
+        <!-- <el-sub-menu index="1">
+          <template #title>
+            <el-icon><location /></el-icon>
+            <span>Navigator One</span>
+          </template>
+          <el-menu-item-group title="Group One">
+            <el-menu-item index="1-1">item one</el-menu-item>
+            <el-menu-item index="1-2">item one</el-menu-item>
+          </el-menu-item-group>
+          <el-menu-item-group title="Group Two">
+            <el-menu-item index="1-3">item three</el-menu-item>
+          </el-menu-item-group>
+          <el-sub-menu index="1-4">
+            <template #title>item four</template>
+            <el-menu-item index="1-4-1">item one</el-menu-item>
+          </el-sub-menu>
+        </el-sub-menu>
+        <el-menu-item index="2">
+          <el-icon><icon-menu /></el-icon>
+          <span>Navigator Two</span>
+        </el-menu-item>
+        <el-menu-item index="3" disabled>
+          <el-icon><document /></el-icon>
+          <span>Navigator Three</span>
+        </el-menu-item>
+        <el-menu-item index="4">
+          <el-icon><setting /></el-icon>
+          <span>Navigator Four</span>
+        </el-menu-item> -->
+      </el-menu>
+    </el-col>
 
-    </div>
+  </el-row>
 </template>
 
 <script setup>
-import {   computed, ref  } from 'vue';
-import { useStore } from "vuex";
+import SiderBarChild from './siderBarChild.vue';
+import routes from '@/router/routes';
+import { computed } from 'vue'
 
-import {
-  Document,
-  Menu as IconMenu,
-  Location,
-  Setting,
-
-  
-} from '@element-plus/icons-vue'
-import Model from '@/components/model'
-let count = 11;
-const test = '123'
-
-const countRef = ref(100)
+// import routes from '@/router/routes.js'
 const handleOpen = (key, keyPath) => {
-  // console.log(key, keyPath)
-}
+  console.log(key, keyPath);
+};
 const handleClose = (key, keyPath) => {
-  // console.log(key, keyPath)
-}
-const store = useStore()
-console.log('zn-store', store)
-const newShow = computed(() => store.state.show)
-console.log('zn-store', newShow, 1);
+  console.log(key, keyPath);
+};
 
-const handleClick = (show) => {
-  store.commit('changeShow', show)
-}
-
-const handleCountChange = () => {
-    count = count + 1;
-    countRef.value = countRef.value + 1;
-    emit('change', 666, 777)
-    if(count%2) {
-      colorRef.value = 'yellow'
-    } else {
-      colorRef.value = 'red'
-
-    }
-}
-
-// 使用指令, 值是个对象， v开头， 使用的时候 v- 开头
-const vMyD = {
-  mounted(el, data) {
-    console.log('zn-vMyD',el, data);
-    el.style.color="green"
-
-  }
-}
-
-
-// 使用props
-const props = defineProps({
-  testProp: {
-    default: '局部',
-    type: String
-  }
-})
-
-// 使用emits
-const emit = defineEmits(['change', 'delete'])
-const colorRef = ref('green')
-const colorFn = (color) => {
-  return color;
-}
-
-defineExpose({
-  countRef,
-  test,
-  handleCountChange
+const currentRoute = computed(() => {
+    return routes.filter((item) => item.name !== 'login')
 })
 </script>
-<style  lang='less' scoped>
-.siderBarCom{
-  // 子组件修改slot中的样式
-  // :slotted(.slotClass){
-  //   color: yellow;
+<style lang="less" scoped>
+  // tac:deep
+  // ::v-deep{
+  //   .el-row {
+  //     width: 100%;
+  //   }
   // }
-  // 支持在class 中 通过js 改变 css 样式的值
-  .myFontColor{
-    color: v-bind(colorFn(colorRef))
+  .tac{
+    // width: 100%;
+    :deep{
+      .el-menu-item {
+        font-size: 20px;
+      }
+      .el-menu-item-group__title{
+        >span {
+          font-size: 20px;
+          color: red;
+        }
+
+      }
+      .el-sub-menu__title{
+        >span{
+          font-size: 20px;
+          color: red;
+        }
+      }
+    }
+
   }
-}
-
-</style>
-
-<style module="classes">
-.red {
-  color: v-bind(colorFn(colorRef));
-}
 </style>

@@ -1,14 +1,16 @@
-const { defineConfig } = require('@vue/cli-service');
-const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
+const {
+  defineConfig
+} = require('@vue/cli-service');
+const {
+  ElementPlusResolver
+} = require('unplugin-vue-components/resolvers')
 const AutoImport = require('unplugin-auto-import/webpack')
 const Components = require('unplugin-vue-components/webpack')
 const webpack = require('webpack')
-// import lodash from 'lodash'
-const  lodash = require('lodash')
-// console.log(lodash, 'zn-lodash')
+
 module.exports = defineConfig({
   transpileDependencies: true,
-  lintOnSave: false,
+  lintOnSave: process.env.NODE_ENV !== 'production',
   configureWebpack: {
     plugins: [
       AutoImport({
@@ -24,16 +26,29 @@ module.exports = defineConfig({
         VERSION: JSON.stringify('5fa3b9'),
         BROWSER_SUPPORTS_HTML5: true,
         TWO: '1+1',
-        MYO: JSON.stringify({a: 1}),
-        OBJ3: {a:"1"},
-        FN: () => { alert(1)},
-        'typeof window': JSON.stringify({a: '1'}),
+        MYO: JSON.stringify({
+          a: 1
+        }),
+        OBJ3: {
+          a: "1"
+        },
+        FN: () => {
+          alert(1)
+        },
+        'typeof window': JSON.stringify({
+          a: '1'
+        }),
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       }),
       // webpack 应该是取字符串里面的值
       new webpack.ProvidePlugin({
         _: 'lodash',
-      })
+      }),
+      // new HtmlWebpackPlugin({
+      //   title: 'v3',
+      //   filename: 'index.html',
+      //   favicon: './liantong.ico'
+      // })
 
     ],
     module: {
@@ -49,5 +64,24 @@ module.exports = defineConfig({
         // },
       ],
     },
-  }
+  },
+  css: {
+    sourceMap: true
+  },
+  devServer: {
+
+    // overlay: {
+    //   warnings: false,
+    //   errors: true
+    // }
+  },
+  // chainWebpack 修改vue 内置的webpack 配置
+  chainWebpack: (config) => {
+    // 修改 hmtl 的 title
+    config.plugin("html").tap(args => {
+      console.log('zn-args', args)
+      args[0].title = 'v3'
+      return args
+    })
+  },
 })

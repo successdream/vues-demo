@@ -9,7 +9,7 @@ export default {
       app.provide('i18n', options)
   
       app.directive('my-directive', {
-        mounted (el, binding, vnode, oldVnode) {
+        mounted (el, binding) {
           el.style.color=binding.value
         }
 

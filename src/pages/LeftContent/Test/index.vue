@@ -20,9 +20,8 @@
 </template>
 
 <script>
-import { ref, onMounted, watch, toRefs, computed, inject, watchEffect   } from "vue";
+import { ref, onMounted, watch, toRefs, inject, watchEffect   } from "vue";
 import { list } from "@/MockData.js";
-import  myMixin  from '../Mymixin/myMixIn.js'
 
 
 export default {
@@ -30,7 +29,7 @@ export default {
   props: ["count"],
   // mixins: [myMixin],
 
-  setup(props, context) {
+  setup(props) {
     // toRefs 装饰过的props,才能在setup中获取到最新值
     const { count } = toRefs(props);
 
@@ -59,11 +58,10 @@ export default {
     // TODO  props 更新 没触发
     watchEffect(() => {
         // console.log('Test中的watchEffect执行了')
-        // debugger
 
     }, { flush: 'post' })
 
-    computed(() => counter.value * 2, {})
+    // computed(() => counter.value * 2, {})
 
     return {
       // count

@@ -6,8 +6,7 @@
 </template>
 
 <script>
-import { onMounted } from '@vue/runtime-core'
-import HelloWorld from './components/HelloWorld.vue'
+
 // ctrl + alt  + l  选中变量 ， 添加 console.log
 // ctrl + D 快速选中单词， 所有的
 // shift + 左右键 选中单词
@@ -19,6 +18,8 @@ import HelloWorld from './components/HelloWorld.vue'
 // ctr +] 或 ctrl + [ 更改缩进
 // ctrl + shift + [ 和 ctrl + shift + ] 折叠所在区域
 // ctrl + h 全局替换， 类似 CTRL + f 选中单词 ，替换
+// ctrl + F4 删除当前tab
+// ctrl + tab 切换tab
 
 export default {
   name: 'App',

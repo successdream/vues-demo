@@ -18,11 +18,13 @@ export default {
   },
   directives: {
     pin: {
+        // eslint-disable-next-line no-unused-vars
         mounted(el, pinPadding) {
             // console.log(el, pinPadding, 'directives', 'mounted' , pinPadding.arg.a, pinPadding.arg.b, pinPadding.value);
            
 
         },
+        // eslint-disable-next-line no-unused-vars
         updated(el, pinPadding) {
             // console.log(el, pinPadding, 'directives', 'updated',  pinPadding.arg.a, pinPadding.arg.b,pinPadding.value );
 
