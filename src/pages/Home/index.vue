@@ -1,7 +1,7 @@
 <template>
   <div class="myHome">
     <div class="myHome_top">
-        <div class="top_left"></div>
+        <div class="top_left">我是Home组件</div>
         <div class="top_right">
           <el-button @click="handleLoginOut">登出</el-button>
         </div>
@@ -25,7 +25,7 @@ import { onMounted, computed } from "vue";
 import SiderBar from "../SiderBar";
 import LeftContent from "../LeftContent";
 import loginOut from './loginOut';
-
+// 登出逻辑分离
 const { handleLoginOut } = loginOut();
 
 // mounted 

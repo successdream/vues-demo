@@ -5,8 +5,10 @@
         <el-icon><Location /></el-icon>
         <span>{{ item.name }}</span>
       </template>
+      <SiderBarChild :list="item.children" v-if="item.children && item.children.length"></SiderBarChild>
 
       <el-menu-item
+        v-else
         :index="item.path"
         v-for="(item, index) in item.children"
         :key="index"
@@ -24,11 +26,11 @@
 <script setup>
 import { defineProps, toRefs, watch } from "vue";
 import { useRouter } from "vue-router";
+import SiderBarChild from './siderBarChild.vue'
+
 import {
-  // Document,
   Menu as IconMenu,
   Location,
-//   Setting,
 } from "@element-plus/icons-vue";
 const props = defineProps({
   list: {
@@ -38,7 +40,8 @@ const props = defineProps({
 });
 console.log(props)
 const { list } = toRefs(props);
-const router = useRouter()
+const router = useRouter();
+
 
 watch(list, (newVal) => {
     console.log(newVal, 'zn-666')
@@ -46,7 +49,7 @@ watch(list, (newVal) => {
     immediate: true
 })
 
-console.log(list)
+console.log(list, 'zn-list')
 
 const handleRouteClick = (e) => {
     console.log(e)

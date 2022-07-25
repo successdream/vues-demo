@@ -28,7 +28,7 @@ export default {
   inject: ['location', 'geolocation', 'obj', 'i18n'],
   props: ["count"],
   // mixins: [myMixin],
-
+  // props 是响应式的， 所以你不能结构， 不然就会失去响应性
   setup(props) {
     // toRefs 装饰过的props,才能在setup中获取到最新值
     const { count } = toRefs(props);
@@ -86,7 +86,7 @@ export default {
     const i18nStrings = {
     hi: 'Hallo!'
   }
-    console.log('Test组件', this.$translate('hi', i18nStrings))
+    // console.log('Test组件', this.$translate('hi', i18nStrings))
 
   },
   updated() {

@@ -1,6 +1,7 @@
 <template>
   <div>
     我是list组件
+    <router-view></router-view>
   </div>
 </template>
 
@@ -12,11 +13,21 @@ export default {
     };
   },
 
-  components: {},
+  components: {
+ 
+  },
 
   computed: {},
 
-  methods: {}
+  methods: {
+    goToAbout() {
+      this.$router.push('/about')
+    },
+    goToOther() {
+      this.$router.push('/first/child1')
+
+    }
+  }
 }
 </script>
 

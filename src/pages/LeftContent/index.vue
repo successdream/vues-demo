@@ -1,12 +1,6 @@
 <template>
   <div class="leftContentBox" id="left-box">
-    <!-- <el-button type="primary" @click="changCount"> 开启全屏 </el-button> -->
-    <!-- <div class="leftSecondBox">
-      <div>我是leftContent组件中的 obj {{ obj.name }}</div>
-      <div>我是leftContent组件中的 testObj {{ obj.name }}</div>
-      <CustomRefCom ></CustomRefCom>
-      
-    </div> -->
+    <div>我是leftContent组件</div>
     <router-view></router-view>
   </div>
 </template>
@@ -249,7 +243,7 @@ export default {
     const i18nStrings = {
       hi: "Hallo!",
     };
-    console.log("LeftContent组件", this.$translate("hi", i18nStrings));
+    // console.log("LeftContent组件", this.$translate("hi", i18nStrings));
   },
 
   methods: {
@@ -288,6 +282,7 @@ export default {
   justify-content: center;
   align-items: center;
   position: relative;
+  flex-direction: column;
   .leftSecondBox {
     background-color: greenyellow;
     height: 500px;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    我是itemSecond 组件
+    我是ListOne组件
   </div>
 </template>
 

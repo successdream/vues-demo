@@ -1,6 +1,6 @@
 <template>
   <div>
-    我是item 组件
+    我是firstChildTwo
   </div>
 </template>
 

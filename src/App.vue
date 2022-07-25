@@ -7,7 +7,7 @@
 
 <script>
 
-// ctrl + alt  + l  选中变量 ， 添加 console.log
+// ctrl + alt  + l  选中变量 ， 添加 console.log 需要插件配合
 // ctrl + D 快速选中单词， 所有的
 // shift + 左右键 选中单词
 // ctrl + g 快速定位到某一行
@@ -20,6 +20,21 @@
 // ctrl + h 全局替换， 类似 CTRL + f 选中单词 ，替换
 // ctrl + F4 删除当前tab
 // ctrl + tab 切换tab
+
+
+// export 导出的两种种形式
+// 1 export const   === 导入 import { } from 
+// 2 export default import  from 
+// 3 import * as  导入的是一个module 包括 export 和 export default
+// 4 export * from 会把所有的非defult导出
+
+
+// vuex 非命名空间
+// actions 和 getters 会暴露 rootState
+// 命名空间
+// 
+
+
 
 export default {
   name: 'App',

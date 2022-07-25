@@ -5,14 +5,28 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
-import { setLocalStorage, } from '@/utils'
-const router =useRouter()
+import { useRoute, useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+const router = useRouter();
+const route = useRoute();
+const store = useStore();
+
+
 const handleLoginIn = () => {
-    setTimeout(() => {
-        setLocalStorage('token', '12315');
-        router.push('/first')
-    }, 1000)
+    store.commit('changeUserToken', '12345');
+    if(route.query.toPath) {
+      router.push({
+        path: route.query.toPath
+      })
+    } else {
+      router.push({
+        path: '/first'
+      })
+    }
+    
+    console.log('zn-router', router, route);
+    
+
 
 }
 

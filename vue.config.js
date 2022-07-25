@@ -8,9 +8,10 @@ const AutoImport = require('unplugin-auto-import/webpack')
 const Components = require('unplugin-vue-components/webpack')
 const webpack = require('webpack')
 
+
 module.exports = defineConfig({
   transpileDependencies: true,
-  lintOnSave: process.env.NODE_ENV !== 'production',
+  lintOnSave: false,
   configureWebpack: {
     plugins: [
       AutoImport({
@@ -79,7 +80,7 @@ module.exports = defineConfig({
   chainWebpack: (config) => {
     // 修改 hmtl 的 title
     config.plugin("html").tap(args => {
-      console.log('zn-args', args)
+      console.log(args, 'zn-args')
       args[0].title = 'v3'
       return args
     })
