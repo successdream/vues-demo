@@ -1,6 +1,8 @@
 <template>
   <div class="leftContentBox" id="left-box">
-    <div>我是leftContent组件</div>
+   <div class="navBar">
+    
+   </div>
     <router-view></router-view>
   </div>
 </template>
@@ -17,7 +19,7 @@ import {
   // eslint-disable-next-line no-unused-vars
   Teleport, // v3 新增组件，可把组件移动到除app组件和body下，其他的则不行
   isProxy, // 检查是不受readOny和reactive装饰的对象
-  toRaw, // 去除poxy装饰，还原本对象，还原的对象和原对象是否可以 === 
+  toRaw, // 去除poxy装饰，还原本对象，还原的对象和原对象是否可以 === // toRaw修饰的数组，filter 后生成的是普通的数组包括poxy对象
   readonly, // 对象的只读属性
   isReactive, // 是否是reactive装饰的对象
   markRaw, // 标记此对象不可作为可响应式对象

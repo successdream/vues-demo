@@ -5,7 +5,7 @@
 
 </template>
 
-<script>
+<script setup>
 
 // ctrl + alt  + l  选中变量 ， 添加 console.log 需要插件配合
 // ctrl + D 快速选中单词， 所有的
@@ -33,47 +33,60 @@
 // actions 和 getters 会暴露 rootState
 // 命名空间
 // 
+// scoped 中 可修改全局样式
+// :global(.red) {
+//   color: red;
+// }
+
+// scoped 可深度修改 子组件样式
+// .a :deep(.b) {
+
+// }
+
+// 当前作用于修改插槽样式
+// :slotted(div) {
+//   color: red;
+// }
 
 
 
-export default {
-  name: 'App',
-  components: {
-    // HelloWorld
-  },
-  mounted() {
-  //  console.log(this.$store.state.count, '全局变量')
-  //  console.log("🚀 ~ file: App.vue ~ line 26 ~ mounted ~ state", '全局变量')
-  //  console.log(PRODUCTION, '全局变量', 1);
+// export default {
+//   name: 'App',
+//   components: {
+//     // HelloWorld
+//   },
+//   mounted() {
+//   //  console.log(this.$store.state.count, '全局变量')
+//   //  console.log("🚀 ~ file: App.vue ~ line 26 ~ mounted ~ state", '全局变量')
+//   //  console.log(PRODUCTION, '全局变量', 1);
 
 
-  //  console.log(VERSION, '全局变量', 2);
-  //  console.log(BROWSER_SUPPORTS_HTML5, '全局变量', 3);
-  //  console.log(TWO, '全局变量', 4);
-  //  console.log(typeof window, '全局变量', 5);
-  //  console.log(process.env.NODE_ENV, '全局变量', 6);
+//   //  console.log(VERSION, '全局变量', 2);
+//   //  console.log(BROWSER_SUPPORTS_HTML5, '全局变量', 3);
+//   //  console.log(TWO, '全局变量', 4);
+//   //  console.log(typeof window, '全局变量', 5);
+//   //  console.log(process.env.NODE_ENV, '全局变量', 6);
    
-  //  console.log(OBJ3, '全局变量', 7 );
+//   //  console.log(OBJ3, '全局变量', 7 );
 
 
-  //  console.log(LODASH, '全局变量', 8);
-  //  console.log(FN, '全局变量', 9);
-  //  console.log(_, '全局变量', 9);
+//   //  console.log(LODASH, '全局变量', 8);
+//   //  console.log(FN, '全局变量', 9);
+//   //  console.log(_, '全局变量', 9);
 
+//   //  FN()
+//   }
+// }
+import { useRoute,  } from 'vue-router';
+import { watch,  } from 'vue';
+import { useStore } from 'vuex';
+const route = useRoute();
+const store = useStore();
 
+watch(route, (newVal) => {
+      store.commit('changeActiveMenu', newVal.path)
+}, { deep: true, immediate: true})
 
-
-  //  FN()
-
-   
-
-   
-   
-   
-   
-   
-  }
-}
 </script>
 
 <style>

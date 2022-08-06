@@ -1,16 +1,18 @@
-import router from '@/router';
+
 import {
   useMyStore
 } from '@/Store';
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css';
-import autoGetFiles from '@/router/automatic.js'
+import router from '@/router';
+
 const myStore = useMyStore();
 NProgress.configure({
   showSpinner: false
 })
 NProgress.start()
 let hasAddRoutes = false;
+// eslint-disable-next-line no-unused-vars
 router.beforeEach((to, from) => {
   // console.log(to, from, myStore.state.user.token, 'zn-router')
   if (!myStore.state.user.token && to.path !== '/login') {
@@ -26,10 +28,8 @@ router.beforeEach((to, from) => {
 
     // 此处保证路由已经添加完毕
     if(!hasAddRoutes) {
-      const list = autoGetFiles();
-      list.forEach((route) => {
-        router.addRoute('home', route)
-      });
+      myStore.dispatch('changRoutes')
+      
       console.log('getRoutes', 1)
       hasAddRoutes = true;
       // 此处会再次执行 router.forEach

@@ -1,16 +1,15 @@
-import FirstChildOne from '@/pages/pageContent/First/FirstChildOne.vue';
-import FirstChildTwo from '@/pages/pageContent/First/FirstChildTwo.vue';
+
 
 const routes = [
     {
-        path: '/first/child1',
-        name: 'firstChild1',
-        component: FirstChildOne
+        path: '/first/firstChildOne',
+        name: '内容二级',
+        component: () => import('@/pages/pageContent/First/FirstChildOne.vue')
     },
     {
-        path: '/first/child2',
-        name: 'firstChild2',
-        component: FirstChildTwo
+        path: '/first/firstChildTwo',
+        name: '内容三级',
+        component: () => import('@/pages/pageContent/First/FirstChildTwo.vue')
     },
 ]
 

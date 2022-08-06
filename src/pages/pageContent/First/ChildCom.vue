@@ -1,6 +1,7 @@
 <template>
   <div class="child-view">
     我是firstChildOne 组件
+
     <!-- <GrandChild v-bind="$attrs" :reactObj="reactObj"></GrandChild> -->
   </div>
 </template>

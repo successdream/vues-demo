@@ -49,14 +49,14 @@ watch(list, (newVal) => {
     immediate: true
 })
 
-console.log(list, 'zn-list')
+
 
 const handleRouteClick = (e) => {
     console.log(e)
     const route = e.index;
     router.push(route)
-
 }
+
 </script>
 
 <style lang='less' scoped>
