@@ -80,7 +80,7 @@ module.exports = defineConfig({
   chainWebpack: (config) => {
     // 修改 hmtl 的 title
     config.plugin("html").tap(args => {
-      console.log(args, 'zn-args')
+      // console.log(args, 'zn-args')
       args[0].title = 'v3'
       return args
     })

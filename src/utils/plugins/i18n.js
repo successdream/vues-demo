@@ -17,7 +17,7 @@ export default {
   
       app.mixin({
         created() {
-          console.log('我是执行的插件的created')
+          // console.log('我是执行的插件的created')
         }
 
       })

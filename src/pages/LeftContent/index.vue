@@ -18,15 +18,15 @@ import {
   watchEffect, // watch 副对象, props变化，不执行， state 变化不执行，因为props和state是对象，引用类型，不会触发
   // eslint-disable-next-line no-unused-vars
   Teleport, // v3 新增组件，可把组件移动到除app组件和body下，其他的则不行
-  isProxy, // 检查是不受readOny和reactive装饰的对象
+  // isProxy, // 检查是不受readOny和reactive装饰的对象
   toRaw, // 去除poxy装饰，还原本对象，还原的对象和原对象是否可以 === // toRaw修饰的数组，filter 后生成的是普通的数组包括poxy对象
   readonly, // 对象的只读属性
   isReactive, // 是否是reactive装饰的对象
-  markRaw, // 标记此对象不可作为可响应式对象
-  unref, // 还原ref， 若ref修饰的是基本值，则还原为基本值，若为对象，执行后为poxy装饰的对象
+  // markRaw, // 标记此对象不可作为可响应式对象
+  // unref, // 还原ref， 若ref修饰的是基本值，则还原为基本值，若为对象，执行后为poxy装饰的对象
   // eslint-disable-next-line no-unused-vars
   toRef, // 此为一个非响应式对象的属性变为可响应式ref
-  toRefs, // 把一个响应式对象，转为普通对象，但是其属性转为ref
+  // toRefs, // 把一个响应式对象，转为普通对象，但是其属性转为ref
   // eslint-disable-next-line no-unused-vars
   isRef, // 检查一个对象是不是一个ref
   // eslint-disable-next-line no-unused-vars
@@ -71,85 +71,85 @@ export default {
       a: 1
     }
     obj.name = "赵六";
-    const refObj = {
-      name: "张三",
-      age: 25,
-    };
+    // const refObj = {
+    //   name: "张三",
+    //   age: 25,
+    // };
     // const refObj = '张三'
     // ref 修饰对象，是用ref包裹了reactive
     // ref 修饰基本值，则直包裹了ref
     // unref 清除ref 包括的对象，则返回的poxy代理的对象，即reactive修饰的对象
-    const objOneRef = ref(refObj);
+    // const objOneRef = ref(refObj);
 
     // const objOneRef = ref({
     //   name: "张三",
     //   age: 25,
     // });
-    const objOneUnRef = unref(objOneRef);
-    console.log(
-      "zn-ref",
-      objOneRef,
-      objOneUnRef,
-      isReactive(objOneUnRef),
-      objOneUnRef === refObj
-    );
+    // const objOneUnRef = unref(objOneRef);
+    // console.log(
+    //   "zn-ref",
+    //   objOneRef,
+    //   objOneUnRef,
+    //   isReactive(objOneUnRef),
+    //   objOneUnRef === refObj
+    // );
 
     // toRaw 去掉 reactive 包裹层
     const fromReadOnly = readonly(testObj);
-    const fromReadOnlyReactive = readonly(obj);
-    const fromReadOnlyRef = readonly(objOne);
+    // const fromReadOnlyReactive = readonly(obj);
+    // const fromReadOnlyRef = readonly(objOne);
 
-    const fromReadOnlyRes = isProxy(fromReadOnly);
-    const fromReadOnlyReactiveRes = isProxy(fromReadOnlyReactive);
-    const fromReadOnlyRefRes = isProxy(fromReadOnlyRef);
-    const fromRes = isProxy(objOne);
-    const froReactive = isProxy(obj);
+    // const fromReadOnlyRes = isProxy(fromReadOnly);
+    // const fromReadOnlyReactiveRes = isProxy(fromReadOnlyReactive);
+    // const fromReadOnlyRefRes = isProxy(fromReadOnlyRef);
+    // const fromRes = isProxy(objOne);
+    // const froReactive = isProxy(obj);
 
-    console.log(
-      fromReadOnlyRes,
-      fromReadOnlyReactiveRes,
-      fromReadOnlyRefRes,
-      froReactive,
-      fromRes,
-      "result"
-    );
+    // console.log(
+    //   fromReadOnlyRes,
+    //   fromReadOnlyReactiveRes,
+    //   fromReadOnlyRefRes,
+    //   froReactive,
+    //   fromRes,
+    //   "result"
+    // );
 
     // eslint-disable-next-line no-unused-vars
     const testReadOnly = isReactive(fromReadOnly);
 
-    const testReadOnlyReactive = isReactive(fromReadOnlyReactive);
-    const testReadOnlyRef = isReactive(fromReadOnlyRef);
-    const testRef = isReactive(objOne);
-    const testReactive = isReactive(obj);
+    // const testReadOnlyReactive = isReactive(fromReadOnlyReactive);
+    // const testReadOnlyRef = isReactive(fromReadOnlyRef);
+    // const testRef = isReactive(objOne);
+    // const testReactive = isReactive(obj);
 
-    console.log(
-      testReadOnlyReactive,
-      testReactive,
-      testRef,
-      testReadOnlyRef,
-      "result-Reactive"
-    );
+    // console.log(
+    //   testReadOnlyReactive,
+    //   testReactive,
+    //   testRef,
+    //   testReadOnlyRef,
+    //   "result-Reactive"
+    // );
 
 
 
-    const toRawOne = toRaw(obj);
-    const toRawTwo = toRaw(objOne);
-    console.log(toRawOne, toRawTwo, objOne, "还原值");
+    // const toRawOne = toRaw(obj);
+    // const toRawTwo = toRaw(objOne);
+    // console.log(toRawOne, toRawTwo, objOne, "还原值");
 
-    const newObj = { a: 1 };
-    const newObjOne = { a: 1 };
+    // const newObj = { a: 1 };
+    // const newObjOne = { a: 1 };
 
-    const markRawObj = markRaw(newObj);
+    // const markRawObj = markRaw(newObj);
 
-    const mydata = reactive(markRawObj);
-    const mydataOne = reactive(newObjOne);
+    // const mydata = reactive(markRawObj);
+    // const mydataOne = reactive(newObjOne);
 
-    console.log(mydata, mydataOne, "myData");
+    // console.log(mydata, mydataOne, "myData");
 
     // console.log(fromObj, fromObjTwo, 'wo')
 
-    console.log(testObj, "xy值");
-    console.log(objOne, "xy值");
+    // console.log(testObj, "xy值");
+    // console.log(objOne, "xy值");
 
     // toRef  为某个对象上的属性做响应式
 
@@ -180,22 +180,22 @@ export default {
     const original = reactive({ count: 0 });
 
     const copy = readonly(original);
-    console.log(original.count, "1", "zn-original");
-    console.log(copy.count, "2", "zn-original");
+    // console.log(original.count, "1", "zn-original");
+    // console.log(copy.count, "2", "zn-original");
 
-    console.log(copy.count, "3", "zn-original");
+    // console.log(copy.count, "3", "zn-original");
     original.count++;
     copy.count++;
 
-    const state = reactive({
-      foo: 1,
-      bar: 2,
-      three: {
-        a:1
-      }
-    });
+    // const state = reactive({
+    //   foo: 1,
+    //   bar: 2,
+    //   three: {
+    //     a:1
+    //   }
+    // });
 
-    const stateAsRefs = toRefs(state);
+    // const stateAsRefs = toRefs(state);
         /*
     stateAsRefs 的类型:
 
@@ -204,15 +204,15 @@ export default {
       bar: Ref<number>
     }
     */
-    console.log(stateAsRefs, 'zn-toRefs')
-    // ref 和原始 property 已经“链接”起来了
-    state.foo++;
-    console.log(stateAsRefs.foo.value, 'zn-toRefs'); // 2
+    // console.log(stateAsRefs, 'zn-toRefs')
+    // // ref 和原始 property 已经“链接”起来了
+    // state.foo++;
+    // console.log(stateAsRefs.foo.value, 'zn-toRefs'); // 2
 
-    stateAsRefs.foo.value++;
-    console.log(state.foo, 'zn-toRefs'); // 3
-    state.three.a++
-    console.log(stateAsRefs.three.value.a, '666','zn-toRefs'); // 3
+    // stateAsRefs.foo.value++;
+    // console.log(state.foo, 'zn-toRefs'); // 3
+    // state.three.a++
+    // console.log(stateAsRefs.three.value.a, '666','zn-toRefs'); // 3
 
 
     // original.count++
@@ -242,9 +242,9 @@ export default {
 
   computed: {},
   mounted() {
-    const i18nStrings = {
-      hi: "Hallo!",
-    };
+    // const i18nStrings = {
+    //   hi: "Hallo!",
+    // };
     // console.log("LeftContent组件", this.$translate("hi", i18nStrings));
   },
 

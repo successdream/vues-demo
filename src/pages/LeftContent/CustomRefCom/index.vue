@@ -9,7 +9,7 @@ import { customRef } from 'vue';
 // import { compact } from 'lodash'
 function useDebouncedRef(value, delay = 200) {
   let timeout
-  console.log(value)
+  // console.log(value)
   return customRef((track, trigger) => {
     
     return {
@@ -21,7 +21,7 @@ function useDebouncedRef(value, delay = 200) {
         clearTimeout(timeout)
         timeout = setTimeout(() => {
           value = newValue;
-          console.log('zn-trigger', trigger)
+          // console.log('zn-trigger', trigger)
           trigger()
         }, delay)
       }
@@ -54,8 +54,8 @@ export default {
     },
     handleFalesy() {  
       
-      const myList = _.compact(this.list);
-      console.log(myList, 'zn-myList');     
+      // const myList = _.compact(this.list);
+      // console.log(myList, 'zn-myList');     
       
     }
   }

@@ -6,7 +6,7 @@ const routes = [
         component: () => import('@/pages/Home'),
         // redirect: '/first/firnistChildOne',
         // redirect: '/first/firstChildOne',
-        redirect: '/detail',
+        redirect: '/video',
 
         children: [
             {
@@ -55,6 +55,11 @@ const routes = [
                 path: '/detail',
                 name: '详情',
                 component: () => import('@/pages/pageContent/Detail'),
+            },
+            {
+                path: '/video',
+                name: '视频',
+                component: () => import('@/pages/pageContent/Video'),
             },
         ]
     },

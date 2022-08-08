@@ -61,6 +61,9 @@ module.exports = {
             2,
            "both"
         ],
+        "no-unused-vars": [
+            0 , { "vars": "all", "args": "after-used", "ignoreRestSiblings": false,}
+        ],
 
         // vars :  两个值  all :  检测所有变量，包括全局环境中的变量。这是默认值
         // local 仅仅检测本作用域中声明的变量是否使用，允许不使用全局环境中的变量。
@@ -69,9 +72,7 @@ module.exports = {
         // all - 所有命名参数必须使用。
         // none - 不检查参数。
         // ignoreRestSiblings: 两个值, true,  false
-        // "no-unused-vars": [
-        //     2 , { "vars": "all", "args": "after-used", "ignoreRestSiblings": false,}
-        // ],
+
         // "no-mixed-spaces-and-tabs": [ 2, "smart-tabs"]
         // "no-mixed-spaces-and-tabs": [2],
 

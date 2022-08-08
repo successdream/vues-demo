@@ -32,7 +32,12 @@
 </template>
 
 <script setup>
-import { ref, toRef, reactive, computed } from "vue";
+import { 
+  ref, 
+  // toRef, 
+  reactive, 
+  computed 
+  } from "vue";
 import ChildView from "./ChildCom.vue";
 const isOpen = ref(false);
 
@@ -64,19 +69,19 @@ const dataRef = ref(testReactive.data);
 // 3 2中数据会变化，但是watch 监听不到该变化
 // 4 toRef中变化的和reactive的值是相同的，即一变都会变化，并且会引起视图的变化
 
-const mythreeObj = {
-  name: "mythreeObj",
-  data: [
-    { name: "王丽", study: "Java" },
-    { name: "李克", study: "Python" },
-  ],
-};
+// const mythreeObj = {
+//   name: "mythreeObj",
+//   data: [
+//     { name: "王丽", study: "Java" },
+//     { name: "李克", study: "Python" },
+//   ],
+// };
 
-const mythreeObjReactive = reactive(mythreeObj);
+// const mythreeObjReactive = reactive(mythreeObj);
 
-const threeNameRef = toRef(mythreeObjReactive, 'name');
-const threeDataRef = toRef(mythreeObjReactive, 'data');
-console.log(mythreeObjReactive, threeNameRef,threeDataRef, 'zn-toRef' )
+// const threeNameRef = toRef(mythreeObjReactive, 'name');
+// const threeDataRef = toRef(mythreeObjReactive, 'data');
+// console.log(mythreeObjReactive, threeNameRef,threeDataRef, 'zn-toRef' )
 
 // computed
 // 1  set 设置数据的时候触发 和 get 获取数据的时候触发
@@ -111,7 +116,7 @@ const plusOne = computed({
 
 plusOne.value = 3;
 
-console.log(count.value, plusOne.value, "zn-new-count"); // 0
+// console.log(count.value, plusOne.value, "zn-new-count"); // 0
 // watch(plusOne.value, (oldVal, newVal) => {
 //   console.log(oldVal , newVal, 'zn-count')
 // })

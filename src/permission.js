@@ -30,7 +30,7 @@ router.beforeEach((to, from) => {
     if(!hasAddRoutes) {
       myStore.dispatch('changRoutes')
       
-      console.log('getRoutes', 1)
+      // console.log('getRoutes', 1)
       hasAddRoutes = true;
       // 此处会再次执行 router.forEach
       return{
@@ -39,7 +39,7 @@ router.beforeEach((to, from) => {
       }
 
     } else {
-      console.log('getRoutes', 2)
+      // console.log('getRoutes', 2)
       NProgress.done()
 
       return true;

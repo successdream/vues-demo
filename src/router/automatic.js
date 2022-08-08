@@ -9,7 +9,7 @@ const  autoGetFiles = () => {
     //   if (key === './index.ts') return
       permissionModules = permissionModules.concat(asyncFiles(key).default)
     })
-    console.log(permissionModules)
+    // console.log(permissionModules)
     return permissionModules;
 }
 

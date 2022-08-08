@@ -38,13 +38,14 @@ const props = defineProps({
     type: Array,
   },
 });
-console.log(props)
+// console.log(props)
 const { list } = toRefs(props);
 const router = useRouter();
 
 
+// eslint-disable-next-line no-unused-vars
 watch(list, (newVal) => {
-    console.log(newVal, 'zn-666')
+    // console.log(newVal, 'zn-666')
 }, {
     immediate: true
 })
@@ -52,7 +53,7 @@ watch(list, (newVal) => {
 
 
 const handleRouteClick = (e) => {
-    console.log(e)
+    // console.log(e)
     const route = e.index;
     router.push(route)
 }

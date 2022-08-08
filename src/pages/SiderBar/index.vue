@@ -18,11 +18,13 @@ import SiderBarChild from './siderBarChild.vue';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 const store = useStore();
+// eslint-disable-next-line no-unused-vars
 const handleOpen = (key, keyPath) => {
-  console.log(key, keyPath);
+  // console.log(key, keyPath);
 };
+// eslint-disable-next-line no-unused-vars
 const handleClose = (key, keyPath) => {
-  console.log(key, keyPath);
+  // console.log(key, keyPath);
 };
 
 const currentRoute = computed(() => {
