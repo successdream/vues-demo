@@ -20,7 +20,7 @@ const handleLoginIn = () => {
       })
     } else {
       router.push({
-        path: '/first'
+        path: '/firstPage'
       })
     }
     

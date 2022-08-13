@@ -70,7 +70,13 @@ module.exports = defineConfig({
     sourceMap: true
   },
   devServer: {
-
+    proxy: {
+      '/api': {
+        target: 'http://cctvalih5ca.v.myalicdn.com',
+        ws: true,
+        changeOrigin: true
+      },
+    }
     // overlay: {
     //   warnings: false,
     //   errors: true

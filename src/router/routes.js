@@ -1,5 +1,11 @@
 const routes = [
-    // { path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('@/pages/NotFound/index.vue')},
+
+    { path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('@/pages/NotFound/index.vue')},
+    {
+        path: '/firstPage',
+        name: '首页',
+        component: () => import('@/pages/FirstPage')
+    },
     {
         path: '/',
         name: '内容管理',
@@ -60,6 +66,11 @@ const routes = [
                 path: '/video',
                 name: '视频',
                 component: () => import('@/pages/pageContent/Video'),
+            },
+            {
+                path: '/excel',
+                name: '表格',
+                component: () => import('@/pages/pageContent/Excel'),
             },
         ]
     },
